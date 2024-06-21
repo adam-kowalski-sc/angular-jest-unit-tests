@@ -1,0 +1,28 @@
+{
+  "users": [
+    { "name": "Jan", "surname": "Nowak", "id": 1 },
+    { "name": "Zuzanna", "surname": "Nowicka", "id": 2 },
+    { "name": "Agata", "surname": "Bartoszewska", "id": 3 },
+    { "name": "Justyna", "surname": "Buksa", "id": 4 },
+    { "name": "Maciej", "surname": "Lewandowski", "id": 5 },
+    { "name": "Artur", "surname": "Juras", "id": 6 },
+    { "name": "Jakub", "surname": "Wojciechowski", "id": 7 },
+    { "name": "Robert", "surname": "Dudek", "id": 8 },
+    { "name": "Sebastian", "surname": "Staszewski", "id": 9 },
+    { "name": "Paulina", "surname": "Kuba", "id": 10 },
+    { "name": "Jan", "surname": "Ptak", "id": 11 },
+    { "name": "Agnieszka", "surname": "Nowak", "id": 12 }
+  ],
+  "posts": [
+    { "title": "Test", "content": "test content", "id": 1, "userId": 2 },
+    { "title": "Test 1", "content": "test content 2", "id": 2, "userId": 4 },
+    { "title": "Test 2", "content": "test content 3", "id": 3, "userId": 5 },
+    { "title": "Test 3", "content": "test content 4", "id": 4, "userId": 6 },
+    { "title": "Test 4", "content": "test content 5", "id": 5, "userId": 1 },
+    { "title": "Test 5", "content": "test content 6", "id": 6, "userId": 3 },
+    { "title": "Test 6", "content": "test content 7", "id": 7, "userId": 4 },
+    { "title": "Test 7", "content": "test content 8", "id": 8, "userId": 8 },
+    { "title": "Test 8", "content": "test content 9", "id": 9, "userId": 1 },
+    { "title": "Test 9", "content": "test content 10", "id": 10, "userId": 9 }
+  ]
+}

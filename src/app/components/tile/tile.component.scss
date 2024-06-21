@@ -1,0 +1,10 @@
+.tile {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+
+  &__title {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+}
