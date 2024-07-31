@@ -1,13 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-tile',
+  selector: "app-tile",
   standalone: true,
   imports: [],
-  templateUrl: './tile.component.html',
-  styleUrl: './tile.component.scss',
+  templateUrl: "./tile.component.html",
+  styleUrl: "./tile.component.scss",
 })
 export class TileComponent {
-  @Input() title: string = '';
-  @Input() content: string = '';
+  @Input() title: string = "";
+  @Input() subtitle: string = "";
+  @Input() content: string = "";
 }

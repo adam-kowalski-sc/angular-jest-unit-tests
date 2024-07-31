@@ -1,0 +1,11 @@
+.users-container {
+  width: 100%;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
