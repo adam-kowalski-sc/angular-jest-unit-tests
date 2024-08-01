@@ -1,0 +1,10 @@
+.add-post-form {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  &__buttons {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+}

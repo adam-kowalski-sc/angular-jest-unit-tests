@@ -1,5 +1,11 @@
 <div class="posts-container">
   <h4>Posts list:</h4>
+
+  @if(!showAddForm) { } @if(showAddForm) {
+  <div>
+    <app-add-post-form />
+  </div>
+  } @else {
   <button
     type="button"
     class="btn btn-success posts-container__button"
@@ -7,6 +13,8 @@
   >
     Add post
   </button>
+  }
+
   <div class="posts-container__list">
     @if(posts.length > 0) { @for (post of posts; track post.id) {
     <app-tile

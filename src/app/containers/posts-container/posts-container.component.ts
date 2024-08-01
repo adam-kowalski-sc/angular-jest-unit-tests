@@ -7,15 +7,15 @@ import {
   OnInit,
 } from "@angular/core";
 import { TileComponent } from "../../components/tile/tile.component";
-import { Observable } from "rxjs";
 import { Post } from "./posts-container.interfaces";
 import { PostsContainerService } from "./posts-container.service";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { AddPostFormComponent } from "../../components/add-post-form/add-post-form.component";
 
 @Component({
   selector: "app-posts-container",
   standalone: true,
-  imports: [TileComponent],
+  imports: [TileComponent, AddPostFormComponent],
   templateUrl: "./posts-container.component.html",
   styleUrl: "./posts-container.component.scss",
   providers: [PostsContainerService],
@@ -23,6 +23,8 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 })
 export class PostsContainerComponent implements OnInit {
   posts: Post[] = [];
+
+  protected showAddForm = false;
 
   private readonly service = inject(PostsContainerService);
   private readonly destroyRef = inject(DestroyRef);
@@ -40,7 +42,8 @@ export class PostsContainerComponent implements OnInit {
   }
 
   onAddClick(): void {
-    console.log("add click");
+    this.showAddForm = true;
+    this.cd.markForCheck();
   }
 
   onDeleteClick(id: string | number): void {
