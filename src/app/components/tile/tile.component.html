@@ -4,6 +4,14 @@
     <h6 class="card-subtitle mb-2 text-muted">{{ subtitle }}</h6>
     @if(content) {
     <p class="card-text">{{ content }}</p>
+    } @if(showDeleteButton) {
+    <button
+      type="button"
+      class="btn btn-danger posts-container__button"
+      (click)="onDeleteClick()"
+    >
+      Delete
+    </button>
     }
   </div>
 </div>

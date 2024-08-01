@@ -1,11 +1,24 @@
 <div class="posts-container">
   <h4>Posts list:</h4>
+  <button
+    type="button"
+    class="btn btn-success posts-container__button"
+    (click)="onAddClick()"
+  >
+    Add post
+  </button>
   <div class="posts-container__list">
-    <!-- @for (user of users$ | async; track user.id; let isEven = $even) {
-      <app-tile
-        [title]="user.surname"
-        [subtitle]="user.name"
-      ></app-tile>
-      } -->
+    @if(posts.length > 0) { @for (post of posts; track post.id) {
+    <app-tile
+      [id]="post.id"
+      [title]="post.title"
+      [subtitle]="post.author"
+      [content]="post.content"
+      [showDeleteButton]="true"
+      (delete)="onDeleteClick($event)"
+    ></app-tile>
+    } } @else {
+    <div class="posts-container__no-data">No available posts</div>
+    }
   </div>
 </div>
