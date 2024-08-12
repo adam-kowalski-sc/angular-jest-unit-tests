@@ -4,3 +4,9 @@ export interface PostDto {
   id: number;
   userId: number;
 }
+
+export interface PostCreationDto {
+  title: string;
+  content: string;
+  userId: number;
+}

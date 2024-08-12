@@ -4,6 +4,7 @@ import { PostsHttpService } from "../../api/posts-http.service";
 import { BehaviorSubject, combineLatest, map, Observable, tap } from "rxjs";
 import { Post } from "./posts-container.interfaces";
 import { UserDto } from "../../api/users-http.interfaces";
+import { PostCreationDto } from "../../api/posts-http.interfaces";
 
 @Injectable()
 export class PostsContainerService {
@@ -42,6 +43,12 @@ export class PostsContainerService {
 
   deletePost(postId: number): void {
     this.postsHttpService.delete(postId).subscribe(() => {
+      this.loadPosts();
+    });
+  }
+
+  createPost(newPost: PostCreationDto): void {
+    this.postsHttpService.post(newPost).subscribe(() => {
       this.loadPosts();
     });
   }

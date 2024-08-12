@@ -13,9 +13,6 @@
               id="title"
               placeholder="enter title"
             />
-            <!-- <div *ngIf="!validTopic" class="text-danger mt-1">
-              Field is required
-            </div> -->
           </div>
           <div class="form-group">
             <label for="content">Post text</label>
@@ -29,30 +26,22 @@
             />
           </div>
 
-          <!-- <div class="form-group">
-            <label for="favoriteProgrammingLanguage"
-              >Favorite programming languages</label
-            >
-            <select
-              formControlName="favoriteProgrammingLanguage"
-              class="form-control"
-              id="favoriteProgrammingLanguage"
-            >
-              <option
-                *ngFor="let language of programmingLanguages"
-                [value]="language"
-              >
-                {{ language }}
+          <div class="form-group">
+            <label for="userId">Author</label>
+            <select formControlName="userId" class="form-control" id="userId">
+              @for (user of users; track user.id) {
+              <option [value]="user.id">
+                {{ user.surname + " " + user.name }}
               </option>
+              }
             </select>
-            <div *ngIf="showQuestion" class="form-text text-muted">
-              Really ???
-            </div>
-          </div> -->
+          </div>
 
           <div class="add-post-form__buttons">
             <button type="submit" class="btn btn-success">Submit</button>
-            <button type="submit" class="btn btn-secondary">Close</button>
+            <button class="btn btn-secondary" (click)="onCloseClick()">
+              Close
+            </button>
           </div>
         </form>
       </div>

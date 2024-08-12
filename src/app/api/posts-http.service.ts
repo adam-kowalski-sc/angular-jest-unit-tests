@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { PostDto } from "./posts-http.interfaces";
+import { PostCreationDto, PostDto } from "./posts-http.interfaces";
 
 @Injectable({
   providedIn: "root",
@@ -17,5 +17,9 @@ export class PostsHttpService {
 
   delete(postId: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.url}/${postId}`);
+  }
+
+  post(createdPost: PostCreationDto): Observable<PostDto> {
+    return this.httpClient.post<PostDto>(this.url, createdPost);
   }
 }

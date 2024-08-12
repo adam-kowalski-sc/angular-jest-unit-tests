@@ -1,9 +1,13 @@
 <div class="posts-container">
   <h4>Posts list:</h4>
 
-  @if(!showAddForm) { } @if(showAddForm) {
+  @if(showAddForm) {
   <div>
-    <app-add-post-form />
+    <app-add-post-form
+      [users]="(users$ | async) ?? []"
+      (close)="onCloseFormClick()"
+      (submitForm)="onSubmitFormClick($event)"
+    />
   </div>
   } @else {
   <button
