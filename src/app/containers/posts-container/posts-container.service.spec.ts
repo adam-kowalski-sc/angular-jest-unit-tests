@@ -1,16 +1,33 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { PostsContainerService } from './posts-container.service';
+import { PostsContainerService } from "./posts-container.service";
+import { UsersHttpService } from "../../api/users-http.service";
+import { PostsHttpService } from "../../api/posts-http.service";
 
-describe('PostsContainerService', () => {
+describe("PostsContainerService", () => {
   let service: PostsContainerService;
 
+  const usersHttpStubService: Partial<UsersHttpService> = {};
+  const postsHttpStubService: Partial<PostsHttpService> = {};
+
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        PostsContainerService,
+        {
+          provide: UsersHttpService,
+          useValue: usersHttpStubService
+        },
+        {
+          provide: PostsHttpService,
+          useValue: postsHttpStubService
+        },
+      ],
+    });
     service = TestBed.inject(PostsContainerService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });
