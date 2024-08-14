@@ -15,8 +15,8 @@ export class PostsHttpService {
     return this.httpClient.get<PostDto[]>(this.url);
   }
 
-  delete(postId: number): Observable<void> {
-    return this.httpClient.delete<void>(`${this.url}/${postId}`);
+  delete(postId: number): Observable<PostDto> {
+    return this.httpClient.delete<PostDto>(`${this.url}/${postId}`);
   }
 
   post(createdPost: PostCreationDto): Observable<PostDto> {
