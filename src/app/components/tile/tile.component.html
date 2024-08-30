@@ -1,15 +1,11 @@
 <div class="card tile">
   <div class="card-body">
-    <h5 class="card-title">{{ title }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{{ subtitle }}</h6>
+    <h5 class="card-title title">{{ title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted subtitle">{{ subtitle }}</h6>
     @if(content) {
     <p class="card-text">{{ content }}</p>
     } @if(showDeleteButton) {
-    <button
-      type="button"
-      class="btn btn-danger posts-container__button"
-      (click)="onDeleteClick()"
-    >
+    <button type="button" class="btn btn-danger" (click)="onDeleteClick()">
       Delete
     </button>
     }
