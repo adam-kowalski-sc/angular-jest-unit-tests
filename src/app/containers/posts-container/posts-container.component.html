@@ -2,7 +2,7 @@
   <h4>Posts list:</h4>
 
   @if(showAddForm) {
-  <div>
+  <div class="posts-container__form">
     <app-add-post-form
       [users]="(users$ | async) ?? []"
       (close)="onCloseFormClick()"
@@ -17,10 +17,9 @@
   >
     Add post
   </button>
-  }
-
+  } @if(posts.length > 0) {
   <div class="posts-container__list">
-    @if(posts.length > 0) { @for (post of posts; track post.id) {
+    @for (post of posts; track post.id) {
     <app-tile
       [id]="post.id"
       [title]="post.title"
@@ -29,8 +28,9 @@
       [showDeleteButton]="true"
       (delete)="onDeleteClick($event)"
     ></app-tile>
-    } } @else {
-    <div class="posts-container__no-data">No available posts</div>
     }
   </div>
+  } @else {
+  <div class="posts-container__no-data">No available posts</div>
+  }
 </div>
