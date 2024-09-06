@@ -21,7 +21,7 @@ export class AddPostFormComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
   @Output() submitForm = new EventEmitter<PostCreationDto>();
 
-  formGroup!: FormGroup;
+  protected formGroup!: FormGroup;
 
   ngOnInit(): void {
     this.createForm();
