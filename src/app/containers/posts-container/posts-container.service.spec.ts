@@ -4,7 +4,7 @@ import { PostsContainerService } from "./posts-container.service";
 import { UsersHttpService } from "../../api/users-http.service";
 import { PostsHttpService } from "../../api/posts-http.service";
 import { UserDto } from "../../api/users-http.interfaces";
-import { of } from "rxjs";
+import { of, throwError } from "rxjs";
 import { PostDto } from "../../api/posts-http.interfaces";
 
 describe("PostsContainerService", () => {
@@ -49,6 +49,8 @@ describe("PostsContainerService", () => {
   };
   const postsHttpStubService: Partial<PostsHttpService> = {
     get: jest.fn().mockReturnValue(of(posts)),
+    delete: jest.fn().mockReturnValue(of({})),
+    post: jest.fn().mockReturnValue(of({})),
   };
 
   beforeEach(() => {
@@ -134,4 +136,45 @@ describe("PostsContainerService", () => {
       });
     });
   }));
+
+  it("deletePost should call delete method from posts http service and reload posts", () => {
+    const postId = 1;
+
+    const deleteSpy = jest.spyOn(postsHttpStubService, "delete");
+    const loadSpy = jest.spyOn(service, "loadPosts");
+
+    service.deletePost(postId);
+
+    expect(deleteSpy).toHaveBeenCalledWith(postId);
+    expect(loadSpy).toHaveBeenCalled();
+  });
+
+  it("createPost should call post method from posts http service and reload posts", () => {
+    const createSpy = jest.spyOn(postsHttpStubService, "post");
+    const loadSpy = jest.spyOn(service, "loadPosts");
+
+    const newPost = {
+      title: "title 1",
+      content: "content 1",
+      userId: 1,
+    };
+
+    service.createPost(newPost);
+
+    expect(createSpy).toHaveBeenCalledWith(newPost);
+    expect(loadSpy).toHaveBeenCalled();
+  });
+
+  it("getPost should return empty array when user get calls return empty array", (done) => {
+    jest
+      .spyOn(usersHttpStubService, "get")
+      .mockReturnValueOnce(throwError(() => new Error()));
+
+    service.loadPosts();
+
+    service.getPosts().subscribe((posts) => {
+      expect(posts).toHaveLength(0);
+      done();
+    });
+  });
 });
