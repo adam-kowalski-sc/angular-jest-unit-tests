@@ -14,10 +14,15 @@ import { AsyncPipe } from "@angular/common";
 })
 export class UsersContainerComponent implements OnInit {
   users$!: Observable<UserDto[]>;
+  loading = true;
 
   private readonly httpClient = inject(UsersHttpService);
 
   ngOnInit(): void {
     this.users$ = this.httpClient.get();
+
+    setTimeout(() => {
+      this.loading = false;
+    }, 3000);
   }
 }

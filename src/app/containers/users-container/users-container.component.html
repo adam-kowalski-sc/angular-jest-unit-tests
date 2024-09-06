@@ -1,5 +1,11 @@
 <div class="users-container">
   <h4>Users list:</h4>
+
+  @if(loading) {
+  <div class="users-container__loader">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+  } @else {
   <div class="users-container__list">
     @for (user of users$ | async; track user.id; let isEven = $even) {
     <app-tile
@@ -9,4 +15,5 @@
     ></app-tile>
     }
   </div>
+  }
 </div>
